@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import "./style.css";
+import Avatar from "./Perfil/Avatar";
+import Username from "./Perfil/Username";
+import Status from "./Perfil/Status";
+import Joined from "./Perfil/Joined";
 
 function formatDate(date) {
   return date.toLocaleDateString();
@@ -9,16 +13,15 @@ class Perfil extends Component {
   render() {
     return (
       <div className="Perfil">
+      
         <div className="UserInfo">
-          <img
-            className="Avatar"
-            src={this.props.author.avatarURL}
-            alt={this.props.author.name}
-          />
-          <div className="UserInfo-name">{this.props.author.name}</div>
+          <Avatar user={this.props.author} />
+          <Username name={this.props.author.name} />
         </div>
-        <div className="UserStatus">{this.props.status}</div>
-        <div className="UserJoined">{formatDate(this.props.joined)}</div>
+
+        <Status status={this.props.status} />
+        <Joined joined={formatDate(this.props.joined)} />
+
       </div>
     );
   }
